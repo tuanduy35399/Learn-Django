@@ -1,3 +1,4 @@
 # Chặn tất cả các thư mục .venv ở bất kỳ cấp độ nào
 **/.venv/
 **.env
+train/
