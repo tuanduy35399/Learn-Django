@@ -142,7 +142,7 @@ if __name__ == "__main__":
     OUTPUT_LABEL_DIR = "../train/mosaic_labels"
     
     # 3. SỐ LƯỢNG ẢNH MOSAIC BẠN MUỐN TẠO RA
-    NUM_MOSAIC_TO_GENERATE = 50  # Bạn có thể đổi thành 100, 500, 1000 tùy ý
+    NUM_MOSAIC_TO_GENERATE = 100  # Bạn có thể đổi thành 100, 500, 1000 tùy ý
     
     # Tạo các thư mục đầu ra nếu chúng chưa tồn tại
     os.makedirs(OUTPUT_IMAGE_DIR, exist_ok=True)

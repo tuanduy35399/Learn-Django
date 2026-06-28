@@ -2,3 +2,4 @@
 **/.venv/
 **.env
 train/
+**/vector_db/
