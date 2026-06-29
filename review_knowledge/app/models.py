@@ -32,6 +32,7 @@ class Post(models.Model):
     createdAt= models.DateTimeField(_("Ngay dang"), auto_now_add=True)
     updateAt= models.DateTimeField(_("Ngay cap nhat"), auto_now_add=True)
     
+    #ham nay de khi client tao bai post thi no se cap nhat lastAccess
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if self.author:
