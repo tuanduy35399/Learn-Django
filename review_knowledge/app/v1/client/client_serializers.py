@@ -14,9 +14,3 @@ class ClientV1Serializer(serializers.ModelSerializer):
             'name': {'required': True},
             'gender': {'default': Client.Gender.MALE},
         }
-        
-class PostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model= Post
-        fields = ['id','author', 'title', 'content','createdAt', 'updateAt']
-

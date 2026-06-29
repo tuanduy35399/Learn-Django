@@ -57,6 +57,22 @@
         "documentation": {}
     },
     {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
         "label": "Client",
         "importPath": "app.models",
         "description": "app.models",
@@ -74,6 +90,14 @@
     },
     {
         "label": "Client",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Post",
         "importPath": "app.models",
         "description": "app.models",
         "isExtraImport": true,
@@ -97,6 +121,14 @@
         "documentation": {}
     },
     {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
         "label": "api_view",
         "importPath": "rest_framework.decorators",
         "description": "rest_framework.decorators",
@@ -105,11 +137,35 @@
         "documentation": {}
     },
     {
-        "label": "client_list",
-        "importPath": "app.v1.client.views",
-        "description": "app.v1.client.views",
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
         "isExtraImport": true,
-        "detail": "app.v1.client.views",
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "PostV1Serializer",
+        "importPath": "post.post_serializers",
+        "description": "post.post_serializers",
+        "isExtraImport": true,
+        "detail": "post.post_serializers",
+        "documentation": {}
+    },
+    {
+        "label": "client_detail",
+        "importPath": "app.v1.client.client_views",
+        "description": "app.v1.client.client_views",
+        "isExtraImport": true,
+        "detail": "app.v1.client.client_views",
+        "documentation": {}
+    },
+    {
+        "label": "client_list",
+        "importPath": "app.v1.client.client_views",
+        "description": "app.v1.client.client_views",
+        "isExtraImport": true,
+        "detail": "app.v1.client.client_views",
         "documentation": {}
     },
     {
@@ -238,28 +294,37 @@
     {
         "label": "ClientV1Serializer",
         "kind": 6,
-        "importPath": "app.v1.client.serializers",
-        "description": "app.v1.client.serializers",
+        "importPath": "app.v1.client.client_serializers",
+        "description": "app.v1.client.client_serializers",
         "peekOfCode": "class ClientV1Serializer(serializers.ModelSerializer):\n    class Meta:\n        model = Client     \n        fields = ['id', 'name', 'gender', 'createdAt','lastAccess']\n        extra_kwargs = {\n            'id': {'read_only': True},\n             #mấy tham số required và default ModelSerializer auto biết khỏi thêm cũng được\n             #này viết cho biết\n             # lưu ý: required và default không được phép cùng tồn tại hay khai báo chung 1 hàng\n            'name': {'required': True},",
-        "detail": "app.v1.client.serializers",
-        "documentation": {}
-    },
-    {
-        "label": "PostSerializer",
-        "kind": 6,
-        "importPath": "app.v1.client.serializers",
-        "description": "app.v1.client.serializers",
-        "peekOfCode": "class PostSerializer(serializers.ModelSerializer):\n    class Meta:\n        model= Post\n        fields = ['id','author', 'title', 'content','createdAt', 'updateAt']",
-        "detail": "app.v1.client.serializers",
+        "detail": "app.v1.client.client_serializers",
         "documentation": {}
     },
     {
         "label": "client_list",
         "kind": 2,
-        "importPath": "app.v1.client.views",
-        "description": "app.v1.client.views",
+        "importPath": "app.v1.client.client_views",
+        "description": "app.v1.client.client_views",
         "peekOfCode": "def client_list(request): \n    if request.method == 'GET':\n        clients= Client.objects.all() # lay het data cua client tu db\n        #chuan hoa\n        serializers = ClientV1Serializer(clients, many = True) #many báo với serializer là đây là 1 list obj \n        return Response(data= serializers.data, status=status.HTTP_200_OK) \n        #co the de data =serializers.data hoac serializers.data cung duoc\n        #nhung phai de dung thu tu Response(data= , status, template,...)\n    elif request.method == 'POST':\n        serializers = ClientV1Serializer(data= request.data)",
-        "detail": "app.v1.client.views",
+        "detail": "app.v1.client.client_views",
+        "documentation": {}
+    },
+    {
+        "label": "client_detail",
+        "kind": 2,
+        "importPath": "app.v1.client.client_views",
+        "description": "app.v1.client.client_views",
+        "peekOfCode": "def client_detail(request, primary_key):\n    #kiem tra su ton tai cua user\n    try:\n        client = Client.objects.get(pk = primary_key)\n    except Client.DoesNotExist:\n        return Response(status=status.HTTP_404_NOT_FOUND)\\\n    if request.method == 'GET':\n        serializers = ClientV1Serializer(client)\n        return Response(serializers.data, status.HTTP_200_OK)\n    elif request.method == 'PUT':",
+        "detail": "app.v1.client.client_views",
+        "documentation": {}
+    },
+    {
+        "label": "PostV1Serializer",
+        "kind": 6,
+        "importPath": "app.v1.post.post_serializers",
+        "description": "app.v1.post.post_serializers",
+        "peekOfCode": "class PostV1Serializer(serializers.ModelSerializer):\n    class Meta:\n        model= Post\n        fields = ['id','author', 'title', 'content','createdAt', 'updateAt']",
+        "detail": "app.v1.post.post_serializers",
         "documentation": {}
     },
     {
@@ -267,7 +332,7 @@
         "kind": 5,
         "importPath": "app.v1.urls",
         "description": "app.v1.urls",
-        "peekOfCode": "urlpatterns = [\n    path('client/', client_list) \n    # neu django thuan ko API thi can co name='client_list' de sau nay ben file HTML tham chieu qua\n    # hoac de redirect (chuyen huong trang)\n    #def create_client(request):\n    # tạo client\n    #return redirect('client_list')\n]",
+        "peekOfCode": "urlpatterns = [\n    path('client/', client_list),\n    # neu django thuan ko API thi can co name='client_list' de sau nay ben file HTML tham chieu qua\n    # hoac de redirect (chuyen huong trang)\n    #def create_client(request):\n    # tạo client\n    #return redirect('client_list')\n    path('client/<int:primary_key>/', client_detail, name='client_detail')\n]",
         "detail": "app.v1.urls",
         "documentation": {}
     },
