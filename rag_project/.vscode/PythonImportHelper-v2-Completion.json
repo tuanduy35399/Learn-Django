@@ -97,6 +97,14 @@
         "documentation": {}
     },
     {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "BaseModel",
         "importPath": "pydantic",
         "description": "pydantic",
@@ -106,10 +114,10 @@
     },
     {
         "label": "ask",
-        "importPath": "rag",
-        "description": "rag",
+        "importPath": "fastAPI.app.google_model.rag",
+        "description": "fastAPI.app.google_model.rag",
         "isExtraImport": true,
-        "detail": "rag",
+        "detail": "fastAPI.app.google_model.rag",
         "documentation": {}
     },
     {
@@ -129,6 +137,14 @@
         "documentation": {}
     },
     {
+        "label": "OllamaLLM",
+        "importPath": "langchain_ollama.llms",
+        "description": "langchain_ollama.llms",
+        "isExtraImport": true,
+        "detail": "langchain_ollama.llms",
+        "documentation": {}
+    },
+    {
         "label": "ChatPromptTemplate",
         "importPath": "langchain_core.prompts",
         "description": "langchain_core.prompts",
@@ -137,120 +153,311 @@
         "documentation": {}
     },
     {
+        "label": "ChatPromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "ask_llm",
+        "importPath": "llms",
+        "description": "llms",
+        "isExtraImport": true,
+        "detail": "llms",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "retriever",
+        "importPath": "rag",
+        "description": "rag",
+        "isExtraImport": true,
+        "detail": "rag",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain_chroma",
+        "description": "langchain_chroma",
+        "isExtraImport": true,
+        "detail": "langchain_chroma",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain_core.documents",
+        "description": "langchain_core.documents",
+        "isExtraImport": true,
+        "detail": "langchain_core.documents",
+        "documentation": {}
+    },
+    {
+        "label": "BaseRetriever",
+        "importPath": "langchain_core.retrievers",
+        "description": "langchain_core.retrievers",
+        "isExtraImport": true,
+        "detail": "langchain_core.retrievers",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformer",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "chromadb",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "chromadb",
+        "description": "chromadb",
+        "detail": "chromadb",
+        "documentation": {}
+    },
+    {
         "label": "documents",
         "kind": 5,
-        "importPath": "fastAPI.app.ingest",
-        "description": "fastAPI.app.ingest",
+        "importPath": "fastAPI.app.google_model.ingest",
+        "description": "fastAPI.app.google_model.ingest",
         "peekOfCode": "documents = load_pdf.load()\n#Khuc nay la phan chia thanh cac chunk \nphanchia = RecursiveCharacterTextSplitter(\n    chunk_size=800,\n    chunk_overlap= 150,\n)\nchunks = phanchia.split_documents(documents)\n#Nhung Googel AI \nembedding = GoogleGenerativeAIEmbeddings(\n    model=\"models/gemini-embedding-2\" #model embedding chuyen doc pdf ",
-        "detail": "fastAPI.app.ingest",
+        "detail": "fastAPI.app.google_model.ingest",
         "documentation": {}
     },
     {
         "label": "phanchia",
         "kind": 5,
-        "importPath": "fastAPI.app.ingest",
-        "description": "fastAPI.app.ingest",
+        "importPath": "fastAPI.app.google_model.ingest",
+        "description": "fastAPI.app.google_model.ingest",
         "peekOfCode": "phanchia = RecursiveCharacterTextSplitter(\n    chunk_size=800,\n    chunk_overlap= 150,\n)\nchunks = phanchia.split_documents(documents)\n#Nhung Googel AI \nembedding = GoogleGenerativeAIEmbeddings(\n    model=\"models/gemini-embedding-2\" #model embedding chuyen doc pdf \n    #chi tiet model o day https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2?hl=vi\n)",
-        "detail": "fastAPI.app.ingest",
+        "detail": "fastAPI.app.google_model.ingest",
         "documentation": {}
     },
     {
         "label": "chunks",
         "kind": 5,
-        "importPath": "fastAPI.app.ingest",
-        "description": "fastAPI.app.ingest",
+        "importPath": "fastAPI.app.google_model.ingest",
+        "description": "fastAPI.app.google_model.ingest",
         "peekOfCode": "chunks = phanchia.split_documents(documents)\n#Nhung Googel AI \nembedding = GoogleGenerativeAIEmbeddings(\n    model=\"models/gemini-embedding-2\" #model embedding chuyen doc pdf \n    #chi tiet model o day https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2?hl=vi\n)\n#tao vectorDB\ndb = Chroma.from_documents(\n    documents=chunks,\n    embedding=embedding,",
-        "detail": "fastAPI.app.ingest",
+        "detail": "fastAPI.app.google_model.ingest",
         "documentation": {}
     },
     {
         "label": "embedding",
         "kind": 5,
-        "importPath": "fastAPI.app.ingest",
-        "description": "fastAPI.app.ingest",
+        "importPath": "fastAPI.app.google_model.ingest",
+        "description": "fastAPI.app.google_model.ingest",
         "peekOfCode": "embedding = GoogleGenerativeAIEmbeddings(\n    model=\"models/gemini-embedding-2\" #model embedding chuyen doc pdf \n    #chi tiet model o day https://ai.google.dev/gemini-api/docs/models/gemini-embedding-2?hl=vi\n)\n#tao vectorDB\ndb = Chroma.from_documents(\n    documents=chunks,\n    embedding=embedding,\n    persist_directory=\"vector_db\"\n)",
-        "detail": "fastAPI.app.ingest",
+        "detail": "fastAPI.app.google_model.ingest",
         "documentation": {}
     },
     {
         "label": "db",
         "kind": 5,
-        "importPath": "fastAPI.app.ingest",
-        "description": "fastAPI.app.ingest",
+        "importPath": "fastAPI.app.google_model.ingest",
+        "description": "fastAPI.app.google_model.ingest",
         "peekOfCode": "db = Chroma.from_documents(\n    documents=chunks,\n    embedding=embedding,\n    persist_directory=\"vector_db\"\n)\ndb.persist()\nprint(\"Đa tao thanh cong vector database\",len(chunks))",
-        "detail": "fastAPI.app.ingest",
+        "detail": "fastAPI.app.google_model.ingest",
         "documentation": {}
     },
     {
         "label": "Question",
         "kind": 6,
-        "importPath": "fastAPI.app.main",
-        "description": "fastAPI.app.main",
+        "importPath": "fastAPI.app.google_model.main",
+        "description": "fastAPI.app.google_model.main",
         "peekOfCode": "class Question(BaseModel):\n    text:str\n@app.get(\"/\")\ndef home():\n    return {\n        \"status\":\"running\"\n    }\n@app.post(\"/chat\")\ndef chat(\n    q:Question",
-        "detail": "fastAPI.app.main",
+        "detail": "fastAPI.app.google_model.main",
         "documentation": {}
     },
     {
         "label": "home",
         "kind": 2,
-        "importPath": "fastAPI.app.main",
-        "description": "fastAPI.app.main",
+        "importPath": "fastAPI.app.google_model.main",
+        "description": "fastAPI.app.google_model.main",
         "peekOfCode": "def home():\n    return {\n        \"status\":\"running\"\n    }\n@app.post(\"/chat\")\ndef chat(\n    q:Question\n):\n    answer=ask(\n        q.text",
-        "detail": "fastAPI.app.main",
+        "detail": "fastAPI.app.google_model.main",
         "documentation": {}
     },
     {
         "label": "chat",
         "kind": 2,
-        "importPath": "fastAPI.app.main",
-        "description": "fastAPI.app.main",
+        "importPath": "fastAPI.app.google_model.main",
+        "description": "fastAPI.app.google_model.main",
         "peekOfCode": "def chat(\n    q:Question\n):\n    answer=ask(\n        q.text\n    )\n    return {\n        \"question\":q.text,\n        \"answer\":answer\n    }",
-        "detail": "fastAPI.app.main",
+        "detail": "fastAPI.app.google_model.main",
         "documentation": {}
     },
     {
         "label": "client",
         "kind": 5,
-        "importPath": "fastAPI.app.model_testAPI",
-        "description": "fastAPI.app.model_testAPI",
+        "importPath": "fastAPI.app.google_model.model_testAPI",
+        "description": "fastAPI.app.google_model.model_testAPI",
         "peekOfCode": "client = genai.Client(\n    api_key=os.getenv(\"GOOGLE_API_KEY\")\n)\nfor model in client.models.list():\n    print(model.name)",
-        "detail": "fastAPI.app.model_testAPI",
+        "detail": "fastAPI.app.google_model.model_testAPI",
         "documentation": {}
     },
     {
         "label": "ask",
         "kind": 2,
-        "importPath": "fastAPI.app.rag",
-        "description": "fastAPI.app.rag",
+        "importPath": "fastAPI.app.google_model.rag",
+        "description": "fastAPI.app.google_model.rag",
         "peekOfCode": "def ask(question):\n    docs = retriever.invoke(question) #goi model\n    context=\"\\n\\n\".join(\n        [\n            d.page_content\n            for d in docs\n        ]\n    )\n    prompt=f\"\"\"\n        Bạn là chuyên gia về kiểm thử phần mềm. Chỉ trả lời dựa trên dữ liệu bên dưới. ",
-        "detail": "fastAPI.app.rag",
+        "detail": "fastAPI.app.google_model.rag",
         "documentation": {}
     },
     {
         "label": "embedding",
         "kind": 5,
-        "importPath": "fastAPI.app.rag",
-        "description": "fastAPI.app.rag",
+        "importPath": "fastAPI.app.google_model.rag",
+        "description": "fastAPI.app.google_model.rag",
         "peekOfCode": "embedding = GoogleGenerativeAIEmbeddings(\n    model = \"models/gemini-embedding-2\"\n)\ndb= Chroma(\n    persist_directory=\"vector_db\",\n    embedding_function=embedding\n)\nretriever = db.as_retriever(\n    search_kwargs={\"k\":3}\n)",
-        "detail": "fastAPI.app.rag",
+        "detail": "fastAPI.app.google_model.rag",
         "documentation": {}
     },
     {
         "label": "retriever",
         "kind": 5,
-        "importPath": "fastAPI.app.rag",
-        "description": "fastAPI.app.rag",
+        "importPath": "fastAPI.app.google_model.rag",
+        "description": "fastAPI.app.google_model.rag",
         "peekOfCode": "retriever = db.as_retriever(\n    search_kwargs={\"k\":3}\n)\nllm = ChatGoogleGenerativeAI(\n    model=\"gemini-2.5-flash-lite\",\n    temperature=0\n)\ndef ask(question):\n    docs = retriever.invoke(question) #goi model\n    context=\"\\n\\n\".join(",
-        "detail": "fastAPI.app.rag",
+        "detail": "fastAPI.app.google_model.rag",
         "documentation": {}
     },
     {
         "label": "llm",
         "kind": 5,
-        "importPath": "fastAPI.app.rag",
-        "description": "fastAPI.app.rag",
+        "importPath": "fastAPI.app.google_model.rag",
+        "description": "fastAPI.app.google_model.rag",
         "peekOfCode": "llm = ChatGoogleGenerativeAI(\n    model=\"gemini-2.5-flash-lite\",\n    temperature=0\n)\ndef ask(question):\n    docs = retriever.invoke(question) #goi model\n    context=\"\\n\\n\".join(\n        [\n            d.page_content\n            for d in docs",
-        "detail": "fastAPI.app.rag",
+        "detail": "fastAPI.app.google_model.rag",
+        "documentation": {}
+    },
+    {
+        "label": "ask_llm",
+        "kind": 2,
+        "importPath": "fastAPI.app.Q3_model.llms",
+        "description": "fastAPI.app.Q3_model.llms",
+        "peekOfCode": "def ask_llm(question, context):\n    res = chain.invoke( {\n        \"context\": context,\n        \"question\": question,\n    }\n    )\n    return res",
+        "detail": "fastAPI.app.Q3_model.llms",
+        "documentation": {}
+    },
+    {
+        "label": "llm",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.llms",
+        "description": "fastAPI.app.Q3_model.llms",
+        "peekOfCode": "llm = OllamaLLM(model ='qwen2.5:7b')\ntemplate = \"\"\"\n        Bạn là chuyên gia quan sát bệnh trên cây mai vàng. Bạn có khả năng đối chiếu rất tốt từ kiến thức \n        đã học bạn nhận được câu hỏi mô tả bệnh là bạn dễ dàng đoán được bệnh ngay.\n        Hãy trả lời bằng cách:\n        - tóm tắt ý chính\n        - giải thích dễ hiểu\n        - không chép nguyên văn\n        Chỉ sử dụng context.\n        CONTEXT:",
+        "detail": "fastAPI.app.Q3_model.llms",
+        "documentation": {}
+    },
+    {
+        "label": "template",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.llms",
+        "description": "fastAPI.app.Q3_model.llms",
+        "peekOfCode": "template = \"\"\"\n        Bạn là chuyên gia quan sát bệnh trên cây mai vàng. Bạn có khả năng đối chiếu rất tốt từ kiến thức \n        đã học bạn nhận được câu hỏi mô tả bệnh là bạn dễ dàng đoán được bệnh ngay.\n        Hãy trả lời bằng cách:\n        - tóm tắt ý chính\n        - giải thích dễ hiểu\n        - không chép nguyên văn\n        Chỉ sử dụng context.\n        CONTEXT:\n        {context}",
+        "detail": "fastAPI.app.Q3_model.llms",
+        "documentation": {}
+    },
+    {
+        "label": "prompt",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.llms",
+        "description": "fastAPI.app.Q3_model.llms",
+        "peekOfCode": "prompt = ChatPromptTemplate.from_template(template)  \n#tạo 1 prompt mà LangChain được được, nó hiểu chỉ cần truyền vào 2 biến context và question\n#lúc này kq là 1 obj với 2 khóa có gtri đang rỗng là context và question (ta sẽ truyền ở hàm ask_llm)\nchain= prompt | llm # dấu | có ý nghĩa là nối các bước xử lý thành 1 pipeline\ndef ask_llm(question, context):\n    res = chain.invoke( {\n        \"context\": context,\n        \"question\": question,\n    }\n    )",
+        "detail": "fastAPI.app.Q3_model.llms",
+        "documentation": {}
+    },
+    {
+        "label": "ask",
+        "kind": 2,
+        "importPath": "fastAPI.app.Q3_model.main",
+        "description": "fastAPI.app.Q3_model.main",
+        "peekOfCode": "def ask(q: str):\n    trace_id = str(uuid.uuid4())\n    #buoc retrieval\n    docs = retriever.invoke(q)\n    context = \"\\n\".join(\n        d.page_content\n        for d in docs\n    )\n    # if not context:\n    #     return {",
+        "detail": "fastAPI.app.Q3_model.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.main",
+        "description": "fastAPI.app.Q3_model.main",
+        "peekOfCode": "app = FastAPI()\n#luu log danh gia model\nRAG_LOGS = []\n@app.get(\"/ask\")\ndef ask(q: str):\n    trace_id = str(uuid.uuid4())\n    #buoc retrieval\n    docs = retriever.invoke(q)\n    context = \"\\n\".join(\n        d.page_content",
+        "detail": "fastAPI.app.Q3_model.main",
+        "documentation": {}
+    },
+    {
+        "label": "RAG_LOGS",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.main",
+        "description": "fastAPI.app.Q3_model.main",
+        "peekOfCode": "RAG_LOGS = []\n@app.get(\"/ask\")\ndef ask(q: str):\n    trace_id = str(uuid.uuid4())\n    #buoc retrieval\n    docs = retriever.invoke(q)\n    context = \"\\n\".join(\n        d.page_content\n        for d in docs\n    )",
+        "detail": "fastAPI.app.Q3_model.main",
+        "documentation": {}
+    },
+    {
+        "label": "ChromaRetriever",
+        "kind": 6,
+        "importPath": "fastAPI.app.Q3_model.rag",
+        "description": "fastAPI.app.Q3_model.rag",
+        "peekOfCode": "class ChromaRetriever(BaseRetriever):\n    k : int = 3\n    def _get_relevant_documents(self, query):\n        query = (\n            \"Represent this sentence for searching relevant passages: \"\n            + query\n        )\n        q_emb = _model.encode(query).tolist()\n        results = _collection.query(\n            query_embeddings=[q_emb],",
+        "detail": "fastAPI.app.Q3_model.rag",
+        "documentation": {}
+    },
+    {
+        "label": "_client",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.rag",
+        "description": "fastAPI.app.Q3_model.rag",
+        "peekOfCode": "_client = chromadb.PersistentClient(\n    path=\"chroma_db\"\n)\n_collection = _client.get_collection(\n    \"cay_mai\"\n)\n_model = SentenceTransformer(\n    \"BAAI/bge-m3\"\n)\nclass ChromaRetriever(BaseRetriever):",
+        "detail": "fastAPI.app.Q3_model.rag",
+        "documentation": {}
+    },
+    {
+        "label": "_collection",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.rag",
+        "description": "fastAPI.app.Q3_model.rag",
+        "peekOfCode": "_collection = _client.get_collection(\n    \"cay_mai\"\n)\n_model = SentenceTransformer(\n    \"BAAI/bge-m3\"\n)\nclass ChromaRetriever(BaseRetriever):\n    k : int = 3\n    def _get_relevant_documents(self, query):\n        query = (",
+        "detail": "fastAPI.app.Q3_model.rag",
+        "documentation": {}
+    },
+    {
+        "label": "_model",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.rag",
+        "description": "fastAPI.app.Q3_model.rag",
+        "peekOfCode": "_model = SentenceTransformer(\n    \"BAAI/bge-m3\"\n)\nclass ChromaRetriever(BaseRetriever):\n    k : int = 3\n    def _get_relevant_documents(self, query):\n        query = (\n            \"Represent this sentence for searching relevant passages: \"\n            + query\n        )",
+        "detail": "fastAPI.app.Q3_model.rag",
+        "documentation": {}
+    },
+    {
+        "label": "retriever",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.rag",
+        "description": "fastAPI.app.Q3_model.rag",
+        "peekOfCode": "retriever = ChromaRetriever()",
+        "detail": "fastAPI.app.Q3_model.rag",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "fastAPI.app.Q3_model.what_collection_now",
+        "description": "fastAPI.app.Q3_model.what_collection_now",
+        "peekOfCode": "client = chromadb.PersistentClient(path=\"chroma_db\")\nprint(client.list_collections())",
+        "detail": "fastAPI.app.Q3_model.what_collection_now",
         "documentation": {}
     },
     {
