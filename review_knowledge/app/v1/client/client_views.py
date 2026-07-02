@@ -21,13 +21,14 @@ def client_list(request):
             return Response(serializers.data,status.HTTP_201_CREATED) 
         #truyen khong dat ten positional argument (lap luan vi tri)
         return Response(serializers.errors, status.HTTP_400_BAD_REQUEST)
+    
 @api_view(['GET', 'PUT', 'DELETE'])
 def client_detail(request, primary_key):
     #kiem tra su ton tai cua user
     try:
         client = Client.objects.get(pk = primary_key)
     except Client.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)\
+        return Response(status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
         serializers = ClientV1Serializer(client)

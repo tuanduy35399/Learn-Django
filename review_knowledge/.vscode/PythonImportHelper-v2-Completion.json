@@ -73,6 +73,38 @@
         "documentation": {}
     },
     {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "Client",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
         "label": "Client",
         "importPath": "app.models",
         "description": "app.models",
@@ -89,6 +121,14 @@
         "documentation": {}
     },
     {
+        "label": "Post",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
         "label": "Client",
         "importPath": "app.models",
         "description": "app.models",
@@ -105,11 +145,11 @@
         "documentation": {}
     },
     {
-        "label": "Post",
-        "importPath": "app.models",
-        "description": "app.models",
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
         "isExtraImport": true,
-        "detail": "app.models",
+        "detail": "rest_framework.response",
         "documentation": {}
     },
     {
@@ -142,14 +182,6 @@
         "description": "rest_framework.decorators",
         "isExtraImport": true,
         "detail": "rest_framework.decorators",
-        "documentation": {}
-    },
-    {
-        "label": "PostV1Serializer",
-        "importPath": "post.post_serializers",
-        "description": "post.post_serializers",
-        "isExtraImport": true,
-        "detail": "post.post_serializers",
         "documentation": {}
     },
     {
@@ -190,6 +222,30 @@
         "description": "django.urls",
         "isExtraImport": true,
         "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "post_detail",
+        "importPath": "app.v1.post.post_views",
+        "description": "app.v1.post.post_views",
+        "isExtraImport": true,
+        "detail": "app.v1.post.post_views",
+        "documentation": {}
+    },
+    {
+        "label": "post_list",
+        "importPath": "app.v1.post.post_views",
+        "description": "app.v1.post.post_views",
+        "isExtraImport": true,
+        "detail": "app.v1.post.post_views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
         "documentation": {}
     },
     {
@@ -314,7 +370,7 @@
         "kind": 2,
         "importPath": "app.v1.client.client_views",
         "description": "app.v1.client.client_views",
-        "peekOfCode": "def client_detail(request, primary_key):\n    #kiem tra su ton tai cua user\n    try:\n        client = Client.objects.get(pk = primary_key)\n    except Client.DoesNotExist:\n        return Response(status=status.HTTP_404_NOT_FOUND)\\\n    if request.method == 'GET':\n        serializers = ClientV1Serializer(client)\n        return Response(serializers.data, status.HTTP_200_OK)\n    elif request.method == 'PUT':",
+        "peekOfCode": "def client_detail(request, primary_key):\n    #kiem tra su ton tai cua user\n    try:\n        client = Client.objects.get(pk = primary_key)\n    except Client.DoesNotExist:\n        return Response(status=status.HTTP_404_NOT_FOUND)\n    if request.method == 'GET':\n        serializers = ClientV1Serializer(client)\n        return Response(serializers.data, status.HTTP_200_OK)\n    elif request.method == 'PUT':",
         "detail": "app.v1.client.client_views",
         "documentation": {}
     },
@@ -328,12 +384,48 @@
         "documentation": {}
     },
     {
+        "label": "post_list",
+        "kind": 2,
+        "importPath": "app.v1.post.post_views",
+        "description": "app.v1.post.post_views",
+        "peekOfCode": "def post_list(request):\n    if request.method == 'GET':\n         post = Post.objects.all()\n         serializers = PostV1Serializer(post, many=True)\n         return Response(data= serializers.data, status= status.HTTP_200_OK)\n    elif request.method == 'POST':\n        serializers = PostV1Serializer(data= request.data)\n        if serializers.is_valid():\n            serializers.save()\n            return Response(data= serializers.data, status = status.HTTP_201_CREATED)",
+        "detail": "app.v1.post.post_views",
+        "documentation": {}
+    },
+    {
+        "label": "post_detail",
+        "kind": 2,
+        "importPath": "app.v1.post.post_views",
+        "description": "app.v1.post.post_views",
+        "peekOfCode": "def post_detail(request, pk):\n    try: \n        post = Post.objects.get(pk=pk)\n    except Post.DoesNotExist:\n        return Response(status= status.HTTP_404_NOT_FOUND)\n    if request.method == 'GET':\n        serializers = PostV1Serializer(post)\n        return Response(data= serializers.data,status=status.HTTP_200_OK)\n    elif request.method == 'PUT':\n        serializers = PostV1Serializer(post, request.data)",
+        "detail": "app.v1.post.post_views",
+        "documentation": {}
+    },
+    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "app.v1.urls",
         "description": "app.v1.urls",
-        "peekOfCode": "urlpatterns = [\n    path('client/', client_list),\n    # neu django thuan ko API thi can co name='client_list' de sau nay ben file HTML tham chieu qua\n    # hoac de redirect (chuyen huong trang)\n    #def create_client(request):\n    # tạo client\n    #return redirect('client_list')\n    path('client/<int:primary_key>/', client_detail, name='client_detail')\n]",
+        "peekOfCode": "urlpatterns = [\n    path('client/', client_list),\n    # neu django thuan ko API thi can co name='client_list' de sau nay ben file HTML tham chieu qua\n    # hoac de redirect (chuyen huong trang)\n    #def create_client(request):\n    # tạo client\n    #return redirect('client_list')\n    path('client/<int:primary_key>/', client_detail, name='client_detail'),\n    path('post/', post_list),\n    path('post/<int:pk>/',post_detail),",
         "detail": "app.v1.urls",
+        "documentation": {}
+    },
+    {
+        "label": "ClientV2Serializers",
+        "kind": 6,
+        "importPath": "app.v2.client.client_serializers",
+        "description": "app.v2.client.client_serializers",
+        "peekOfCode": "class ClientV2Serializers(serializers.ModelSerializer):\n    class Meta:\n        model= Client,\n        # fields = ['id','name','gender','activate', 'createdAt', 'lastAccess']\n        fields = '__all__'",
+        "detail": "app.v2.client.client_serializers",
+        "documentation": {}
+    },
+    {
+        "label": "PostV2Serializers",
+        "kind": 6,
+        "importPath": "app.v2.post.post_serializers",
+        "description": "app.v2.post.post_serializers",
+        "peekOfCode": "class PostV2Serializers(serializers.ModelSerializer):\n    class Meta:\n        model= Post,\n        # fields = ['id', 'author', 'title', 'content', 'createdAt', 'updatedAt']\n        fields = '__all__'",
+        "detail": "app.v2.post.post_serializers",
         "documentation": {}
     },
     {
@@ -377,7 +469,7 @@
         "kind": 6,
         "importPath": "app.models",
         "description": "app.models",
-        "peekOfCode": "class Post(models.Model):\n    author = models.ForeignKey(Client, on_delete= models.CASCADE, related_name=\"posts\",verbose_name=_(\"Tac gia\")) \n    #related name dùng để Client gọi ngược lại Post \n    #Client sẽ gọi client.posts.all()\n    # trong python bắt buộc các tham số ko tên phải đặt trước tham số có tên\n    # phải đúng thứ tự các tham số ForeignKey(ten bảng tham chiếu, on_delete,verbose_name)\n    title = models.CharField(_(\"Tieu de\"),max_length=500, blank=False)\n    content = models.TextField(_(\"Noi dung\"))\n    createdAt= models.DateTimeField(_(\"Ngay dang\"), auto_now_add=True)\n    updateAt= models.DateTimeField(_(\"Ngay cap nhat\"), auto_now_add=True)",
+        "peekOfCode": "class Post(models.Model):\n    author = models.ForeignKey(to = Client, on_delete= models.CASCADE, related_name=\"posts\",verbose_name=_(\"Tac gia\")) \n        #related name dùng để Client gọi ngược lại Post \n        #Client sẽ gọi client.posts.all()\n        # trong python bắt buộc các tham số ko tên phải đặt trước tham số có tên\n        # phải đúng thứ tự các tham số ForeignKey(ten bảng tham chiếu, on_delete,verbose_name)\n    title = models.CharField(_(\"Tieu de\"),max_length=500, blank=False)\n    content = models.TextField(_(\"Noi dung\"))\n    createdAt= models.DateTimeField(_(\"Ngay dang\"), auto_now_add=True)\n    updateAt= models.DateTimeField(_(\"Ngay cap nhat\"), auto_now_add=True)",
         "detail": "app.models",
         "documentation": {}
     },

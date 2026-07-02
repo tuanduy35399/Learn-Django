@@ -13,7 +13,7 @@ template = """
         - tóm tắt ý chính
         - giải thích dễ hiểu
         - không chép nguyên văn
-
+        
         Chỉ sử dụng context.
 
         CONTEXT:

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app.models import Client, Post
+from app.models import Client
 
     
 class ClientV1Serializer(serializers.ModelSerializer):

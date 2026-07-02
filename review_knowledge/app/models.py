@@ -17,25 +17,26 @@ class Client(models.Model):
     gender= models.IntegerField(_("Gioi tinh"),choices= Gender.choices, default=Gender.MALE)
     active = models.BooleanField(_("Kich hoat"),default=False)
     createdAt= models.DateTimeField(_("Thoi gian tao"), auto_now_add=True)
-    lastAccess = models.DateTimeField(_("Lan cuoi truy cap"), auto_now=True)
+    lastAccess = models.DateTimeField(_("Lan cuoi truy cap"), auto_now_add=True) #luc moi tao se luu thoi gian moi tao
     def __str__(self):
         return self.name
 
 class Post(models.Model):
-    author = models.ForeignKey(Client, on_delete= models.CASCADE, related_name="posts",verbose_name=_("Tac gia")) 
-    #related name dùng để Client gọi ngược lại Post 
-    #Client sẽ gọi client.posts.all()
-    # trong python bắt buộc các tham số ko tên phải đặt trước tham số có tên
-    # phải đúng thứ tự các tham số ForeignKey(ten bảng tham chiếu, on_delete,verbose_name)
+    author = models.ForeignKey(to = Client, on_delete= models.CASCADE, related_name="posts",verbose_name=_("Tac gia")) 
+        #related name dùng để Client gọi ngược lại Post 
+        #Client sẽ gọi client.posts.all()
+        # trong python bắt buộc các tham số ko tên phải đặt trước tham số có tên
+        # phải đúng thứ tự các tham số ForeignKey(ten bảng tham chiếu, on_delete,verbose_name)
     title = models.CharField(_("Tieu de"),max_length=500, blank=False)
     content = models.TextField(_("Noi dung"))
     createdAt= models.DateTimeField(_("Ngay dang"), auto_now_add=True)
     updateAt= models.DateTimeField(_("Ngay cap nhat"), auto_now_add=True)
-    
-    #ham nay de khi client tao bai post thi no se cap nhat lastAccess
+        
+        #ham nay de khi client tao bai post thi no se cap nhat lastAccess
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         if self.author:
             self.author.save()
     def __str__(self):
         return self.title
+        
